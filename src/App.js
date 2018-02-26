@@ -5,7 +5,6 @@ import { Home, Shop } from './components'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton';
-// import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 class App extends Component {
@@ -68,6 +67,7 @@ class App extends Component {
       user: '',
       isLoggedIn: false
     })
+    this.handleClose()
   }
 
   render() {
@@ -81,7 +81,6 @@ class App extends Component {
       <FlatButton
         label='Signup'
         primary={true}
-        keyboardFocused={true}
         onClick={this.userLogin}
       />,
     ]
@@ -122,7 +121,7 @@ class App extends Component {
                       open={this.state.open}
                       onRequestClose={this.handleClose}
                     >
-                      <form onSubmit={this.userLogin} target="/home">
+                      {/* <form onSubmit={this.userLogin} target="/home"> */}
                         <TextField
                           name="fullname"
                           floatingLabelText="Full Name"
@@ -130,11 +129,11 @@ class App extends Component {
                           onChange={this.updateUsername}
                           onKeyDown={(e) => {if(e.keyCode === 13) this.userLogin()}}
                         />
-                      </form>
+                      {/* </form> */}
                     </Dialog>) : 
                   ( <Dialog
                       title={`You are logged in as ${this.state.user.name}.`}
-                      action={loggedInActions}
+                      actions={loggedInActions}
                       modal={false}
                       open={this.state.open}
                       onRequestClose={this.handleClose}

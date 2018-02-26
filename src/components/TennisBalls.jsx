@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Card, CardActions, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
 
-class Hats extends Component {
+class TennisBalls extends Component {
   render() {
     const { productList } = this.props
     const productListJSX = productList.map(product => {
@@ -29,7 +29,7 @@ class Hats extends Component {
     })
     return (
       <main className="container">  
-        <h2>Hats Page.</h2>
+        <h2>TennisBalls Page.</h2>
         <div className="row">
           {productListJSX}
         </div>
@@ -38,4 +38,4 @@ class Hats extends Component {
   }
 }
 
-export default Hats 
+export default TennisBalls 

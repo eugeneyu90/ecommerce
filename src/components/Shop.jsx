@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
-import { Shoes, Hats, Cart } from './'
+import { Rackets, TennisBalls, Cart } from './'
 import axios from 'axios' 
 
 
@@ -195,20 +195,20 @@ class Shop extends Component {
       <div>
         <nav style={{height: '40px', lineHeight: '40px'}}>
           <ul className="right">
-            <li> <Link to={match.url + '/shoes'}>Shoes</Link></li>
-            <li> <Link to={match.url + '/hats'}>Hats</Link></li>
+            <li> <Link to={match.url + '/rackets'}>Rackets</Link></li>
+            <li> <Link to={match.url + '/tennisballs'}>Tennis Balls</Link></li>
             <li> <Cart cartList={this.state.cart} updateCartFromDelete={this.updateCartFromDelete}/> </li>
           </ul>
         </nav>
         <Switch>
           <Route exact path={match.path} render={() => { return <h1>This is the main shopping page.</h1>}} />
           <Route 
-            path={match.path + '/shoes'}
-            render={() => { return <Shoes productList={this.state.shoes} updateCart={this.updateCart} /> } 
+            path={match.path + '/rackets'}
+            render={() => { return <Rackets productList={this.state.rackets} updateCart={this.updateCart} /> } 
           } />
           <Route 
-            path={match.path + '/hats'}
-            render={() => { return <Hats productList={this.state.hats} updateCart={this.updateCart}/> }
+            path={match.path + '/tennisballs'}
+            render={() => { return <TennisBalls productList={this.state.balls} updateCart={this.updateCart}/> }
           } />
         </Switch>
       </div>

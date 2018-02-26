@@ -1,8 +1,8 @@
 import Home from './Home'
 import Shop from './Shop'
 import Cart from './Cart'
-import Shoes from './Shoes'
-import Hats from './Hats'
+import Rackets from './Rackets'
+import TennisBalls from './TennisBalls'
 
 
-export { Home, Shop, Cart, Shoes, Hats }
+export { Home, Shop, Cart, Rackets, TennisBalls }

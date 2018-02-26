@@ -21,6 +21,7 @@ class Cart extends Component {
     super(props)
     this.state = {
       open: false,
+      selectedRows: [],
     }
   }
   
@@ -32,18 +33,23 @@ class Cart extends Component {
     open: false
   })
   
-  updateItemsToDelete = (e, i) => {
-    console.log(e)
-    cartAfterDelete = this.props.cartList
-    
-    e.forEach((row, index) => {
-      // deletedItems.push(this.props.cartList[row])
-      cartAfterDelete.splice(row, 1)
+  handleSelected = (selectedRow) => {
+    this.setState({
+      selectedRows: selectedRow
     })
   }
 
   removeFromCart = () => {
-    this.props.updateCartFromDelete(cartAfterDelete)
+    const selectedRows = this.state.selectedRows
+    let updatedCart = this.props.cartList
+    selectedRows.forEach((rowIndex) => {
+      updatedCart.splice(rowIndex, 1)
+    })
+
+    this.props.updateCartFromDelete(updatedCart)
+    this.setState({
+      selectedRows: []
+    })
   }
 
 
@@ -53,7 +59,7 @@ class Cart extends Component {
     let productsJSX = ''
     cartList &&
       (totalPrice = cartList.reduce((acc, cur) => {
-        return acc + cur.price
+        return acc + Number(cur.price)
       }, 0))
     const styles = {
       root: {
@@ -73,7 +79,10 @@ class Cart extends Component {
         tableLayout: "auto"
       },
       itemNameCol: {
-        width: "50%"
+        width: "50%",
+        whiteSpace: 'normal',
+        wordWrap: 'break-word',
+        lineHeight: '1.5'
       },
       otherCols: {
         width: "25%"
@@ -89,7 +98,7 @@ class Cart extends Component {
     cartList &&
      (productsJSX = cartList.map((product, i) => {
       return (
-        <TableRow key={i} >
+        <TableRow key={i} selected={this.state.selectedRows.indexOf(i) !== -1}>
           <TableRowColumn style={styles.itemNameCol}>{product.name}</TableRowColumn>
           <TableRowColumn style={styles.otherCols}>{product.price}</TableRowColumn>
           <TableRowColumn style={styles.otherCols}>{product.type}</TableRowColumn>
@@ -111,7 +120,7 @@ class Cart extends Component {
             fixedFooter={true} 
             style={styles.tableLayout}
             multiSelectable={true} 
-            onRowSelection={(event, id) => { this.updateItemsToDelete(event, id)}}
+            onRowSelection={(event) => { this.handleSelected(event)}}
           >
             <TableHeader displaySelectAll={false}>
               <TableRow>
@@ -120,7 +129,7 @@ class Cart extends Component {
                 <TableHeaderColumn style={styles.otherCols}>Type</TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody displayRowCheckbox={true}>
+            <TableBody displayRowCheckbox={true} deselectOnClickaway={false}>
               {productsJSX}
             </TableBody>
             <TableFooter adjustForCheckbox={this.state.showCheckboxes}>
