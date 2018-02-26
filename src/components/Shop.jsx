@@ -189,8 +189,6 @@ class Shop extends Component {
 
   render() {
     let { match } = this.props
-    console.log(match.path)
-    console.log(match.url)
     return (
       <div>
         <nav className="grey darken-4" style={{height: '40px', lineHeight: '40px'}}>

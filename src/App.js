@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Redirect } from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
 import './App.css';
 import { Home, Shop } from './components'
@@ -21,6 +21,8 @@ class App extends Component {
 
   componentDidUpdate() {
     localStorage.setItem('user', JSON.stringify(this.state.user))
+    if(this.state.user === '')
+      localStorage.removeItem('user')
   }
 
   componentWillMount() {
@@ -157,6 +159,8 @@ class App extends Component {
             </div>
           </nav>
           <Switch>
+            {/* <Redirect from={match.url + 'shop'} to={this.state.isLoggedIn ? (match.url + 'shop') : (match.url + '/') }/> */}
+            {/* <Redirect from={match.path + 'shop'} to={match.path + '/'}/> */}
             <Route 
               path={match.url + '/'} 
               render={(routeProps) => {
@@ -168,7 +172,18 @@ class App extends Component {
                   )
               }}
             />
-            <Route path={match.url + 'shop'} component={Shop} />
+            
+            <Route path={match.url + 'shop'} render={(routeProps) => {
+              return (
+              this.state.isLoggedIn ? 
+                (<Shop {...routeProps}/>) :
+                (<Home 
+                    name={this.state.user.name}
+                    isLoggedIn={this.state.isLoggedIn}
+                    {...routeProps} />
+                  )
+              )}} />
+              <Route path={match.url + 'shop'} component={Shop} />
           </Switch>
         </div>
       </MuiThemeProvider>

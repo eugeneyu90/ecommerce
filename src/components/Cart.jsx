@@ -12,9 +12,6 @@ import {
   TableFooter
 } from 'material-ui/Table';
 
-// Global Variable for deleting list.
-let cartAfterDelete = []
-console.log(cartAfterDelete)
 
 class Cart extends Component {
   constructor(props) {
@@ -42,9 +39,9 @@ class Cart extends Component {
   removeFromCart = () => {
     const selectedRows = this.state.selectedRows
     let updatedCart = this.props.cartList
-    selectedRows.forEach((rowIndex) => {
-      updatedCart.splice(rowIndex, 1)
-    })
+    for(let i = selectedRows.length-1; i >= 0; i--) {
+      updatedCart.splice(selectedRows[i], 1)
+    }
 
     this.props.updateCartFromDelete(updatedCart)
     this.setState({
