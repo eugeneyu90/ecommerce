@@ -173,6 +173,7 @@ class Shop extends Component {
       method: 'POST',
       url: 'http://localhost:8080/cart',
       data: {
+        // name: this.props.name,
         cart: this.state.cart
       }
     }).then(res => {
@@ -185,7 +186,6 @@ class Shop extends Component {
       cart: cart
     })
   }
-
 
   render() {
     let { match } = this.props

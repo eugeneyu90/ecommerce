@@ -4,7 +4,9 @@ import $ from 'jquery'
 class Home extends Component {
 
   componentDidMount() {
-    // $(function(){ $('.carousel.carousel-slider').carousel({fullWidth: true}); });
+    $( document ).ready(function() {
+      window.$('.carousel.carousel-slider').carousel({fullWidth: true})
+    })
   }
 
   render() {

@@ -27,7 +27,7 @@ class App extends Component {
 
   componentWillMount() {
     let user = JSON.parse(localStorage.getItem('user'))
-    if(user) {
+    if(user && user !== '') {
       this.setState({
         user: user,
         isLoggedIn: true
@@ -130,15 +130,13 @@ class App extends Component {
                       open={this.state.open}
                       onRequestClose={this.handleClose}
                     >
-                      {/* <form onSubmit={this.userLogin} target="/home"> */}
-                        <TextField
-                          name="fullname"
-                          floatingLabelText="Full Name"
-                          type="text"
-                          onChange={this.updateUsername}
-                          onKeyDown={(e) => {if(e.keyCode === 13) this.userLogin()}}
-                        />
-                      {/* </form> */}
+                      <TextField
+                        name="fullname"
+                        floatingLabelText="Full Name"
+                        type="text"
+                        onChange={this.updateUsername}
+                        onKeyDown={(e) => {if(e.keyCode === 13) this.userLogin()}}
+                      />
                     </Dialog>) : 
                   ( <Dialog
                       title={`You are logged in as ${this.state.user.name}.`}
@@ -183,7 +181,14 @@ class App extends Component {
                     {...routeProps} />
                   )
               )}} />
-              <Route path={match.url + 'shop'} component={Shop} />
+              <Route path={match.url + 'shop'} render={(routeProps) => {
+                return (
+                  <Shop 
+                    name={this.state.user.name}
+                    isLoggedIn={this.state.isLoggedIn}
+                    {...routeProps} />
+                )}}
+                />
           </Switch>
         </div>
       </MuiThemeProvider>
