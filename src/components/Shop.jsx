@@ -193,7 +193,7 @@ class Shop extends Component {
     console.log(match.url)
     return (
       <div>
-        <nav style={{height: '40px', lineHeight: '40px'}}>
+        <nav className="grey darken-4" style={{height: '40px', lineHeight: '40px'}}>
           <ul className="right">
             <li> <Link to={match.url + '/rackets'}>Rackets</Link></li>
             <li> <Link to={match.url + '/tennisballs'}>Tennis Balls</Link></li>
@@ -201,7 +201,7 @@ class Shop extends Component {
           </ul>
         </nav>
         <Switch>
-          <Route exact path={match.path} render={() => { return <h1>This is the main shopping page.</h1>}} />
+          <Route exact path={match.path} render={() => { return <h2 style={{textAlign: 'center'}}>All equipments are available.</h2>}} />
           <Route 
             path={match.path + '/rackets'}
             render={() => { return <Rackets productList={this.state.rackets} updateCart={this.updateCart} /> } 

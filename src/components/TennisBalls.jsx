@@ -15,13 +15,13 @@ class TennisBalls extends Component {
             </CardMedia>
             <CardTitle title={name} subtitle={`Price: $${price}`} />
             <CardText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Description...
             </CardText>
             <CardActions>
               <RaisedButton 
-                  label="Add to Cart" 
-                  onClick={() => { this.props.updateCart(product) }} 
-                />
+                label="Add to Cart" 
+                onClick={() => { this.props.updateCart(product) }} 
+              />
             </CardActions>
           </Card>
         </div>
@@ -29,7 +29,7 @@ class TennisBalls extends Component {
     })
     return (
       <main className="container">  
-        <h2>TennisBalls Page.</h2>
+        <h2 style={{textAlign: 'center'}}>Tennis Balls</h2>
         <div className="row">
           {productListJSX}
         </div>

@@ -96,22 +96,29 @@ class App extends Component {
         onClick={this.userLogout}
       />,
     ]
+    const styles = {
+      navCustom: {
+        // backgroundColor: '#212121',
+        // opacity: 0.7,
 
+      }
+    }
     return (
       <MuiThemeProvider>
         <div >
-          <nav>
-            <div className="nav-wrapper">
+          <nav className="navbar-fixed">
+            <div style={styles.navCustom} className="nav-wrapper black">
               <a href="#" className="brand-logo">
-                <i className="material-icons">cloud</i>
-                eCommerce Store
+                
+                {/* <i className="material-icons">cloud</i> */}
+                Tennis Zone
               </a>
               <ul className="right">
                 <li><Link to={match.url}>Home</Link></li>
                 <li><Link to={match.url + 'shop'}>Shop</Link></li>
                 <li>
-                  <a onClick={this.handleOpen}>
-                    <i className="material-icons material-icons.md-24">account_box</i>
+                  <a onClick={this.handleOpen} style={{paddingRight: '0px'}}>
+                    <i className="material-icons material-icons.md-24" >account_box</i>
                   </a>
                   {!this.state.isLoggedIn ? 
                   ( <Dialog
@@ -140,6 +147,11 @@ class App extends Component {
                       >
                     </Dialog>
                   )}
+                </li>
+                <li>
+                  <a onClick={this.handleOpen} style={{paddingLeft: '3px'}}>
+                    {this.state.user.name === '' ? "Guest" : this.state.user.name}
+                  </a>
                 </li>
               </ul>
             </div>

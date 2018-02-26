@@ -15,7 +15,7 @@ class Rackets extends Component {
             </CardMedia>
             <CardTitle title={name} subtitle={`Price: $${price}`} />
             <CardText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Description...
             </CardText>
             <CardActions>
               <RaisedButton 
@@ -29,7 +29,7 @@ class Rackets extends Component {
     })
     return (
       <main className="container">  
-        <h2>Rackets Page.</h2>
+        <h2 style={{textAlign: 'center'}}>Rackets</h2>
         <div className="row">
           {productListJSX}
         </div>
