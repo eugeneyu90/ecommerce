@@ -150,7 +150,7 @@ class App extends Component {
                 </li>
                 <li>
                   <a onClick={this.handleOpen} style={{paddingLeft: '3px'}}>
-                    {this.state.user.name === '' ? "Guest" : this.state.user.name}
+                    {this.state.isLoggedIn ? this.state.user.name : '' }
                   </a>
                 </li>
               </ul>
