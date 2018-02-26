@@ -42,14 +42,14 @@ class Home extends Component {
     }
     
     let welcomeMessage = ''
-    welcomeMessage = isLoggedIn ? <h2>Welcome {name}!</h2> : <h2>You are not logged in!</h2>
+    welcomeMessage = isLoggedIn ? <h2 style={styles.firstPanel} >Welcome {name}! <br/> Your journey starts here.</h2> : <h2 style={styles.firstPanel} >Login now for the latest deals!</h2>
     return (
       <div>
         <div className="carousel carousel-slider center" data-indicators="true" style={styles.carousel} >
           <div className="carousel-fixed-item center">
           </div>
           <div style={styles.background1} className="carousel-item black white-text" href="#one!">
-            <h2 style={styles.firstPanel} >Welcome {name}! <br/> Your journey starts here.</h2>
+            {welcomeMessage}
           </div>
           <div style={styles.background2} className="carousel-item black white-text" href="#two!">
             <h2 style={styles.secondPanel} >Focus</h2>
