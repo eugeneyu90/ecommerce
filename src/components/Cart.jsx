@@ -115,7 +115,7 @@ class Cart extends Component {
           openSecondary={true}
           onRequestChange={(open) => this.setState({open})}
         >
-          <AppBar title="Your Cart" showMenuIconButton={false} />
+          <AppBar title="Your Cart" showMenuIconButton={false} style={{backgroundColor: 'black'}} titleStyle={{textAlign: 'center'}}/>
           <Table 
             fixedFooter={true} 
             style={styles.tableLayout}
@@ -143,7 +143,7 @@ class Cart extends Component {
               </TableRow>
             </TableFooter>
           </Table>
-          <div>
+          <div style={{textAlign: 'center'}}>
             <RaisedButton
               label="Remove"
               containerElement="label"
